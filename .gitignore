@@ -1,0 +1,28 @@
+  # Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables / secrets
+.env
+
+# Flask / app instance data
+instance/
+
+# SQLite database files
+*.db
+*.sqlite3
+
+# Migrations (optional)
+# If you use Flask-Migrate, DO commit migrations
+# migrations/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+
