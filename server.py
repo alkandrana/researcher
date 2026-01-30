@@ -28,9 +28,14 @@ operas = [
     }
 ]
 @app.route("/")
-def home():
-    return render_template('home.html')
+def index():
+    return render_template('index.html')
 
-@app.route("/books")
-def about():
-    return render_template('books.html', operas=operas, title='List of Recordings')
+@app.route("/records")
+def list_records():
+    return render_template('records.html', operas=operas, title='List of Recordings')
+
+@app.route("/record/1")
+def display_record():
+    record = operas[0]
+    return f"<h1> { record['title'] } </h1> <p>Composer: {record['composer'] } </p>"
