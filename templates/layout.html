@@ -12,7 +12,20 @@
   <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 
 </head>
-<body>
-  {% block content %}{% endblock %}
+<body class="d-flex flex-column min-vh-100 bg-dark text-light">
+  <header class="bg-dark text-white text-center py-3 mb-4">
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('index') }}">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{{ url_for('list_records') }}">List</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container mx-auto">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="bg-dark text-light mt-auto p-4">
+
+  </footer>
 </body>
 </html>

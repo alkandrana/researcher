@@ -8,6 +8,7 @@
       <th>Composer</th>
       <th>Conductor</th>
       <th>Orchestra</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -17,6 +18,8 @@
         <td>{{ opera.composer }}</td>
         <td>{{ opera.conductor }}</td>
         <td>{{ opera.orchestra }}</td>
+        <td><a href="{{ '/record/%s' % opera.id }}">View Details</a>
+</td>
       </tr>
     {% endfor %}
     </tbody>
