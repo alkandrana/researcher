@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Add a New Recording</h1>
+  <form method="POST" action="{{ url_for('album.add_album') }}">
+    {{form.hidden_tag()}}
+    <div class="form-group">
+      {{form.uid.label(class='form-label')}}
+      {{form.uid(class='form-control')}}
+      {% if form.uid.errors %}
+        <div class="text-danger">
+          {% for error in form.uid.errors %}
+            <p>{{error}}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{form.title.label(class='form-label')}}
+      {{form.title(class='form-control')}}
+      {% if form.title.errors %}
+        <div class="text-danger">
+          {% for error in form.title.errors %}
+            <p>{{error}}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      {{form.medium.label(class='form-label')}}
+      {{form.medium(class='form-control')}}
+      {% if form.medium.errors %}
+        <div class="text-danger">
+          {% for error in form.medium.errors %}
+            <p>{{error}}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    {{form.submit(class='btn btn-success')}}
+  </form>
+{% endblock content %}

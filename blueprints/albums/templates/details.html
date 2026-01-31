@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>{{ album.title }}</h1>
+<ul>
+    <li>Catalog Number: {{ album.uid }}</li>
+    <li>Record Medium: {{ album.medium }}</li>
+</ul>
+<a href="" class="btn btn-success">New Item</a>
+
+<h2 class="text-center">Program</h2>
+{% if album.performances %}
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Composer</th>
+            <th>Type</th>
+            <th>Excerpts?</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for work in album.performances %}
+            <tr>
+                <td>{{ work.title }}</td>
+                <td>{{ work.composer }}</td>
+                <td>{{ work.type }}</td>
+                <td>{{ work.excerpts }}</td>
+                <td>{{ work.location.venue }}, {{ work.location.city }}, {{ work.location.country }}</td>
+                <td>{{ work.date }}</td>
+                <td>
+                    <a href="{{ url_for('performance.edit', work.id) }}">Edit</a>
+                    <form action="{{ url_for('performance.delete', work.id) }}" method="post">
+                        <button type="submit" class="btn-link link-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% else %}
+    <h4 class="text-danger text-center">No Records Found</h4>
+{% endif %}
+{% endblock %}
