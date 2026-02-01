@@ -6,8 +6,8 @@ app = Flask(__name__)
 app.secret_key = '2e89284079e0a7bf53361aabf6ecd467cb0f322f300da85b337485f2ceb68bed'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
-from blueprints.albums.album import album
-app.register_blueprint(album)
+from blueprints.albums.album import album_bp
+app.register_blueprint(album_bp)
 
 
 

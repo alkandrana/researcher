@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if message %}
+        <div class="text-success">
+            {{ message }}
+        </div>
+    {% endif %}
+    <h1>Recording List</h1>
+    <table class="table-dark table-striped table">
+        <thead>
+        <tr>
+            <th>Catalog Number</th>
+            <th>Title</th>
+            <th>Record Medium</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for a in albums %}
+            <tr>
+                <td>{{ a.uid }}</td>
+                <td>{{ a.title }}</td>
+                <td>{{ a.medium }}</td>
+                <td>
+                    <div class="row">
+                        <a href="{{ url_for( 'album.get_album', id=a.id) }}" class="col"><i class="fa-solid fa-circle-info text-success"></i></a>
+                        <a href="{{ url_for('album.update_album', id=a.id) }}" class="col"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
+                        <form method="POST" action="{{ url_for('album.delete_album', id=a.id) }}" class="col">
+                            <button class="btn btn-link link-danger pt-0"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        <tr>
+        <td colspan="4" class="text-center">
+            <button type="button" class="btn btn-primary" id='newAlbumBtn'>New Album</button>
+            <form method="POST" action="{{ url_for('album.add_album') }}" class="row d-none" id="newAlbumForm">
+                {{form.hidden_tag()}}
+                {{form.uid(class="col-3 bg-dark text-light border-0", id='uid')}}
+                  {% if form.uid.errors %}
+                    <div class="text-danger">
+                      {% for error in form.uid.errors %}
+                        <p>{{error}}</p>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  {{form.title(class="col-6 bg-dark text-light border-0")}}
+                  {% if form.title.errors %}
+                    <div class="text-danger">
+                      {% for error in form.title.errors %}
+                        <p>{{error}}</p>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  {{form.medium(class="col bg-dark text-light border-0")}}
+                  {% if form.medium.errors %}
+                    <div class="text-danger">
+                      {% for error in form.medium.errors %}
+                        <p>{{error}}</p>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {{form.submit(class='col btn btn-success m-2')}}
+            </form>
+        </td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+
+        function createNewAlbum(){
+            let newBtn = document.getElementById('newAlbumBtn');
+            let newForm = document.getElementById('newAlbumForm');
+            newBtn.addEventListener('click', function(){
+                newForm.classList.remove('d-none');
+                newBtn.classList.add('d-none');
+                document.getElementById('uid').focus();
+            });
+        }
+
+        window.onload = () => {
+            createNewAlbum();
+        }
+
+    </script>
+{% endblock content %}

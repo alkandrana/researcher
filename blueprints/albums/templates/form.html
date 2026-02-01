@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
   <h1>Add a New Recording</h1>
-  <form method="POST" action="{{ url_for('album.add_album') }}">
+  <form method="POST" action="{{ url_for('album.update_album', id=album.id) }}">
     {{form.hidden_tag()}}
     <div class="form-group">
       {{form.uid.label(class='form-label')}}
