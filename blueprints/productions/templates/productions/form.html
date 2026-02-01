@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="pb-5">Add a New Program Item</h1>
+    {% if action == "add" %}
+        <form method="POST" action="{{ url_for('production.add', album_id=form.album_id.data) }}">
+            {{ form.hidden_tag() }}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.title.label(class="col-form-label") }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.title(class="form-control col-4") }}
+                </div>
+            </div>
+            {% if form.title.errors %}
+                <div class="text-danger">
+                    {% for error in form.title.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.composer.label(class="col-form-label") }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.composer(class="form-control") }}
+                </div>
+            </div>
+            {% if form.composer.errors %}
+                <div class="text-danger">
+                    {% for error in form.composer.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.type.label(class="col-form-label") }}
+                </div>
+                <div class="col-4">
+                    {{ form.type(class="form-select") }}
+                </div>
+            </div>
+            {% if form.type.errors %}
+                <div class="text-danger">
+                    {% for error in form.type.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.highlights.label(class="col-form-label") }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.highlights(class="form-check-input") }}
+                </div>
+            </div>
+            {% if form.highlights.errors %}
+                <div class="text-danger">
+                    {% for error in form.highlights.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.date.label(class="col-form-label") }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.date(class="form-control") }}
+                </div>
+            </div>
+            {% if form.date.errors %}
+                <div class="text-danger">
+                    {% for error in form.date.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.submit(class="btn btn-success") }}
+        </form>
+    {% elif action == "edit" %}
+        <form method="POST" action="{{ url_for('production.edit', id=production_id) }}">
+            {{ form.hidden_tag() }}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.title.label(class="col-form-label") }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.title(class="form-control col-4") }}
+                </div>
+            </div>
+            {% if form.title.errors %}
+                <div class="text-danger">
+                    {% for error in form.title.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.composer.label(class="col-form-label") }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.composer(class="form-control") }}
+                </div>
+            </div>
+            {% if form.composer.errors %}
+                <div class="text-danger">
+                    {% for error in form.composer.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.type.label(class="col-form-label") }}
+                </div>
+                <div class="col-4">
+                    {{ form.type(class="form-select") }}
+                </div>
+            </div>
+            {% if form.type.errors %}
+                <div class="text-danger">
+                    {% for error in form.type.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.highlights.label(class="col-form-label") }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.highlights(class="form-check-input") }}
+                </div>
+            </div>
+            {% if form.highlights.errors %}
+                <div class="text-danger">
+                    {% for error in form.highlights.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row m-5">
+                <div class="col-md-2">
+                    {{ form.date.label(class="col-form-label") }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.date(class="form-control") }}
+                </div>
+            </div>
+            {% if form.date.errors %}
+                <div class="text-danger">
+                    {% for error in form.date.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.submit(class="btn btn-success") }}
+        </form>
+    {% endif %}
+{% endblock %}

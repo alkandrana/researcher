@@ -7,14 +7,16 @@ app.secret_key = '2e89284079e0a7bf53361aabf6ecd467cb0f322f300da85b337485f2ceb68b
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 from blueprints.albums.album import album_bp
+from blueprints.productions.production import production_bp
 app.register_blueprint(album_bp)
+app.register_blueprint(production_bp)
 
 
 
 
-# with app.app_context():
-  #   if not os.path.exists('site.db'):
-    #     db.create_all()
+with app.app_context():
+   if not os.path.exists('site.db'):
+     db.create_all()
 
 @app.route("/")
 def index():
