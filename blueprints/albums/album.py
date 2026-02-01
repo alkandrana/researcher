@@ -1,8 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from pyexpat.errors import messages
-from sqlalchemy.util import methods_equivalent
-
-from .forms import AlbumForm
+from blueprints.albums.forms import AlbumForm
 from server import db
 from models import Album
 
