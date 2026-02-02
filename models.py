@@ -93,7 +93,8 @@ class Track(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sequence = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(255), nullable=False)
-    type = db.Column(db.String(50), nullable=False)
+    type = db.Column(db.String(50), nullable=True)
+    length = db.Column(db.String(8), nullable=True)
     performance_id = db.Column(db.Integer, db.ForeignKey('performances.id'), nullable=False)
     def __repr__(self):
         return f"Track {self.sequence}: {self.title}"

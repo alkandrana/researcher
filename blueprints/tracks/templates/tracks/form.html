@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Add New Track</h1>
+    <form method="POST" action="{{ url_for('track.add', performance_id=form.performance_id.data) }}">
+        {{ form.hidden_tag() }}
+        <div class="row m-5">
+            <div class="col-md-2">
+                {{ form.sequence.label(class="col-form-label") }}
+            </div>
+            <div class="col-md-4">
+                {{ form.sequence(class="form-control col-4") }}
+            </div>
+        </div>
+        {% if form.sequence.errors %}
+            <div class="text-danger">
+                {% for error in form.sequence.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="row m-5">
+            <div class="col-md-2">
+                {{ form.title.label(class="col-form-label") }}
+            </div>
+            <div class="col-md-4">
+                {{ form.title(class="form-control") }}
+            </div>
+        </div>
+        {% if form.title.errors %}
+            <div class="text-danger">
+                {% for error in form.title.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="row m-5">
+            <div class="col-md-2">
+                {{ form.type.label(class="col-form-label") }}
+            </div>
+            <div class="col-4">
+                {{ form.type(class="form-control") }}
+            </div>
+        </div>
+        {% if form.type.errors %}
+            <div class="text-danger">
+                {% for error in form.type.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="row m-5">
+            <div class="col-md-2">
+                {{ form.length.label(class="col-form-label") }}
+            </div>
+            <div class="col-4">
+                {{ form.length(class="form-control") }}
+            </div>
+        </div>
+        {% if form.length.errors %}
+            <div class="text-danger">
+                {% for error in form.length.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.submit(class="btn btn-success") }}
+    </form>
+{% endblock %}
