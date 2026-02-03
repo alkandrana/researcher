@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Add New Track</h1>
-    <form method="POST" action="{{ url_for('track.add', performance_id=form.performance_id.data) }}">
+    <form method="POST" action="{{ action_url }}">
         {{ form.hidden_tag() }}
         <div class="row m-5">
             <div class="col-md-2">
